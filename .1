@@ -1,0 +1,33 @@
+point0 = (0, 2)
+point1 = (2, 5)
+point2 = (5, 2)
+point3 = (6, 6)
+point4 = (8, 3)
+
+points = [point1, point2, point3, point4]
+point=()
+from itertools import permutations
+min_dis=0
+for i in permutations(points):
+  
+  j=0
+  total_dis=0
+  dis=0
+  total_dis+=(((point0[0]-i[0][0])**2+(point0[1]-i[0][1])**2)**0.5)
+  
+  while j<3:
+    dis+=(((i[j][0]-i[j+1][0])**2+(i[j][1]-i[j+1][1])**2)**0.5)
+    j=j+1
+  total_dis+=dis
+  total_dis+=(((point0[0]-i[j][0])**2+(point0[1]-i[j][1])**2)**0.5)
+  
+  if total_dis<min_dis or min_dis==0:
+    min_dis=total_dis
+    min_path=tuple(i)
+  
+  
+print(f'{point0} -> {min_path[0]}[{(((point0[0]-min_path[0][0])**2+(point0[1]-min_path[0][1])**2)**0.5)}] -> ' 
+  f'{min_path[1]}[{(((min_path[0][0]-min_path[0+1][0])**2+(min_path[0][1]-min_path[0+1][1])**2)**0.5)}] ->'
+  f' {min_path[2]}[{(((min_path[1][0]-min_path[1+1][0])**2+(min_path[1][1]-min_path[1+1][1])**2)**0.5)}] ->'
+  f' {min_path[3]}[{(((min_path[2][0]-min_path[2+1][0])**2+(min_path[2][1]-min_path[2+1][1])**2)**0.5)}] ->'
+  f' {point0}[{(((point0[0]-min_path[3][0])**2+(point0[1]-min_path[3][1])**2)**0.5)}] = {min_dis}')
