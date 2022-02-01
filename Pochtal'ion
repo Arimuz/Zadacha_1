@@ -5,7 +5,6 @@ point3 = (6, 6)
 point4 = (8, 3)
 
 points = [point1, point2, point3, point4]
-point=()
 from itertools import permutations
 min_dis=0
 for i in permutations(points):
